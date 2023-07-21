@@ -1,3 +1,4 @@
+package logica;
 public class CalculadoraCortisol {
 
     public static void main(String[] args) {

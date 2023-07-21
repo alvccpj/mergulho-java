@@ -1,3 +1,4 @@
+package logica;
 public class CalculadoraJurosCompostosWhile {
 
     public static void main(String[] args) {
