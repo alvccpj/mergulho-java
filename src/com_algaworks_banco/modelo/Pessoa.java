@@ -1,4 +1,4 @@
-package poo;
+package com_algaworks_banco.modelo;
 
 public class Pessoa {
     private String nome;
@@ -18,4 +18,5 @@ public class Pessoa {
 
     public void setDocumento(String documento) {
         this.documento = documento;
-    }}
+    }
+}

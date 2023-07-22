@@ -1,4 +1,4 @@
-package poo;
+package com_algaworks_banco.modelo;
 
 import java.util.Objects;
 
@@ -41,6 +41,10 @@ public abstract class Conta {
         } else {
             saldo = saldo - valor;
         }
+    }
+
+    public void sacar(double valor, double taxaSaque) {
+        sacar(valor + taxaSaque);
     }
 
     public abstract void debitarTarifaMensal();
