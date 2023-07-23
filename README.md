@@ -9,7 +9,7 @@ Este é um projeto que vai desde o início da Lógica de programação em Java a
 
 * Programação Orientada a Objetos
 
-* API
+* API REST
 
 * Framework (Spring Boot)
 
