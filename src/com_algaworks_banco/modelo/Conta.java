@@ -2,6 +2,8 @@ package com_algaworks_banco.modelo;
 
 import java.util.Objects;
 
+import com_algaworks_banco.modelo.excecao.SaldoInsuficienteException;
+
 public abstract class Conta {
 
     // características
@@ -37,7 +39,7 @@ public abstract class Conta {
         if (valor <= 0) {
             throw new IllegalArgumentException("Saldo insuficiente");
         } else if (getSaldoDisponivel() - valor < 0) {
-            throw new IllegalStateException("Saldo insuficiente");
+            throw new SaldoInsuficienteException("Saldo insuficiente");
         } else {
             saldo = saldo - valor;
         }

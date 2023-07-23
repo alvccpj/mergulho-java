@@ -2,6 +2,7 @@ package com_algaworks_banco.app;
 
 import com_algaworks_banco.modelo.*;
 import com_algaworks_banco.modelo.atm.CaixaEletronico;
+import com_algaworks_banco.modelo.excecao.SaldoInsuficienteException;
 import com_algaworks_banco.modelo.pagamento.Boleto;
 import com_algaworks_banco.modelo.pagamento.Holerite;
 
@@ -20,28 +21,27 @@ public class Main {
         ContaInvestimento minhaConta = new ContaInvestimento(titular1, 123, 987);
         ContaEspecial suaConta = new ContaEspecial(titular2, 222, 333, 1000);
         
-        minhaConta.depositar(30000);
-        minhaConta.sacar(1000);
-        // minhaConta.creditarRendimentos(0.8);
-        // minhaConta.debitarTarifaMensal();
+        try {
+            minhaConta.depositar(30000);
+            minhaConta.sacar(31000);
 
-        suaConta.depositar(15000);
-        suaConta.sacar(15500);
-        suaConta.debitarTarifaMensal();
+            suaConta.depositar(15000);
+            suaConta.sacar(15500);
+            suaConta.debitarTarifaMensal();
 
-        Boleto boletoEscola = new Boleto(titular2, 800);
-        Holerite salarioFuncionario = new Holerite(titular2, 100, 160, false);
+            Boleto boletoEscola = new Boleto(titular2, 35000);
+            Holerite salarioFuncionario = new Holerite(titular2, 100, 160, false);
 
-        caixaEletronico.pagar(boletoEscola, minhaConta);
-        caixaEletronico.pagar(salarioFuncionario, minhaConta);
+            caixaEletronico.pagar(boletoEscola, minhaConta);
+            caixaEletronico.pagar(salarioFuncionario, minhaConta);
 
-        caixaEletronico.estornarPagamento(boletoEscola, minhaConta);
+            caixaEletronico.estornarPagamento(boletoEscola, minhaConta);
 
-        boletoEscola.imprimirRecibo();
-        salarioFuncionario.imprimirRecibo();
-
-        // System.out.println("Boleto pago: " +boletoEscola.estaPago());
-        // System.out.println("Salário pago: " +salarioFuncionario.estaPago());
+            boletoEscola.imprimirRecibo();
+            salarioFuncionario.imprimirRecibo();
+        } catch (SaldoInsuficienteException e) {
+            System.out.println("Erro ao executar operação na conta: " + e.getMessage());
+        }
 
         caixaEletronico.imprimirSaldo(minhaConta);
         System.out.println();
