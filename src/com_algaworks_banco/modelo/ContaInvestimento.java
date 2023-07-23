@@ -1,5 +1,8 @@
 package com_algaworks_banco.modelo;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class ContaInvestimento extends Conta {
 
     public ContaInvestimento(Pessoa titular, int agencia, int numero) {
@@ -9,14 +12,14 @@ public class ContaInvestimento extends Conta {
     @Override
     public void debitarTarifaMensal() {
         {
-            if (getSaldo() < 10000) {
-                sacar(30);
+            if (getSaldo().compareTo(new BigDecimal("1000")) < 0) {
+                sacar(new BigDecimal(30));
             }
         }
     }
 
-    public void creditarRendimentos(double percentualJuros) {
-        double valolRendimentos = getSaldo() * percentualJuros / 100;
+    public void creditarRendimentos(BigDecimal percentualJuros) {
+        BigDecimal valolRendimentos = getSaldo().multiply(percentualJuros).divide(new BigDecimal("100"), 2, RoundingMode.HALF_EVEN);
         depositar(valolRendimentos);
     }
 }
