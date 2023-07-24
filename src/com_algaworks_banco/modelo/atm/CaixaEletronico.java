@@ -1,5 +1,4 @@
 package com_algaworks_banco.modelo.atm;
-
 import com_algaworks_banco.modelo.Conta;
 import com_algaworks_banco.modelo.pagamento.DocumentoEstornavel;
 import com_algaworks_banco.modelo.pagamento.DocumentoPagavel;

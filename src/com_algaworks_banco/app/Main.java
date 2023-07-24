@@ -1,7 +1,5 @@
 package com_algaworks_banco.app;
-
 import java.math.BigDecimal;
-
 import com_algaworks_banco.modelo.*;
 import com_algaworks_banco.modelo.atm.CaixaEletronico;
 import com_algaworks_banco.modelo.excecao.SaldoInsuficienteException;

@@ -2,6 +2,7 @@ package com_algaworks_banco.modelo;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Pessoa {
     private String nome;
@@ -10,6 +11,16 @@ public class Pessoa {
     private TipoPessoa tipo = TipoPessoa.FISICA;
     private LocalDateTime dataUltimaAtualizacao = LocalDateTime.now();
 
+
+    public Pessoa() {
+    }
+    
+    public Pessoa(String nome, String documento) {
+        this.nome = nome;
+        this.documento = documento;
+
+    }
+    
     public String getNome() {
         return this.nome;
     }
@@ -50,6 +61,30 @@ public class Pessoa {
 
     public void setDataUltimaAtualizacao(LocalDateTime dataUltimaAtualizacao) {
         this.dataUltimaAtualizacao = dataUltimaAtualizacao;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " nome='" + getNome() + "'" +
+            ", documento='" + getDocumento() + "'" +
+            ", tipo='" + getTipo() + "'" + 
+            "}";
+    } 
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
+
+        Pessoa pessoa = (Pessoa) obj;
+        return documento.equals(pessoa.documento);
+    }
+
+    @Override
+    public int hashCode() {
+        return 1;
     }
 
 }
